@@ -1,0 +1,14 @@
+CLIChatBot1.py => cli chat bot with no memory and no roles
+CLIChatBot2.py => add roles + talk about tempreture and max token + add + talk about Prompt Eng + add 
+CLIChatBot.py => talk first about strategies of keeping memory +a dd Memory 
+
+roles(system and user)
+prompt Engeneering (basic rules, types[3])
+    using the right verbs
+    structured output 
+    zero/one/few shot prompting 
+
+talk about context + add a history  to the model
+    show that the model remembers nothing 
+    add a history 
+    show some Basic strategies for managing context length: Full history, Sliding window(only last N), Summarization
