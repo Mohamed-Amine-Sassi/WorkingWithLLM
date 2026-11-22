@@ -1,14 +1,103 @@
-CLIChatBot1.py => cli chat bot with no memory and no roles
-CLIChatBot2.py => add roles + talk about tempreture and max token + add + talk about Prompt Eng + add 
-CLIChatBot.py => talk first about strategies of keeping memory +a dd Memory 
+Day 1:
+Block 1:
+Explain: 
+    LLM
+    Token
+    Context window
+    API
+Set up:
+    conda create -n llm-course python=3.11
+    conda activate llm-course
+    pip install openai
+    Get OpenRouterKey and put it in .env
+Demo:
+    Explain what the CLIChatBot1.py contains, simple chatbot tisa2lou yjewbik
+    Code CLIChatBot1.py
+    explain: load_dotenv()
+            os.getenv
+            OpenAI(api_key=..., base_url=...)
+            client.chat.completions.create() : il methode 7adhra t5alina na7kiw m3a il Ai model mte3na , naba3thoulou sou2l w yraj3ilna jweb
+            stream.choices[0].message.content
+Test:
+    Ask a question and see
 
-roles(system and user)
-prompt Engeneering (basic rules, types[3])
-    using the right verbs
-    structured output 
-    zero/one/few shot prompting 
+Block 2:
+Golhom kifech manech 9a3din nit7akmou fil model w ma najmouch nepredictiw chniya bech yjewibna, hedha 3lech 3na 7aja ismha roles
+Explain:
+    system: Rules, persona and format.
+    user: The question or task.
+    assistant: Earlier answers, or a sample answer you write for it.
+Demo:
+    Add a system message, yitb3ath m3a kol call
+    explain: systemMessage: list fwostha dictionaire (fasir il dictionaire) 
+            ##RULES
+            temperature
+            max_tokens
+Test: 
+    ask a question that the model won't answer tw
 
-talk about context + add a history  to the model
-    show that the model remembers nothing 
-    add a history 
-    show some Basic strategies for managing context length: Full history, Sliding window(only last N), Summarization
+Block 3: 
+Explain: 
+    Prompt
+    Prompt engineering  
+    Basic rules: 
+        -Be specific (what exactly you want ?)
+        -Give context (who is the answer for ?)
+        -Use the right verbs 
+        -Say what to do, not only what to avoid.
+        -Separate instructions from data
+        -Iterate.
+    Zero-, one- and few-shot prompting
+    Chain-of-thought (for reasoning promblems like math)
+Demo: 
+    Continue the message2 and message3 of CLIChatBot2
+Test:
+    Test kol mara bi wa7da 
+    
+
+Day 2:
+Block 1:
+Show them that he model remembers nothing 
+Explain:
+        the model only sees what's in the message list.
+        the idea: add the user message (system +userInput + ...) + send the list to the model + add the model answer to the list
+Demo:
+    Explain: message_history = messages2.copy()
+            message_history.append({"role": "user", "content": user_input})
+            sends the whole message_history
+            append the answer as an assistant message.
+Test:
+    My name is ....
+    what's my name 
+    
+Block2: 
+the history is lost when closing
+Demo:
+    explain that we need a save history and a load history functions
+
+Block3:
+the problem behin a growing history 
+Explain:
+    context window
+    The problems: cost 
+                Speed 
+                Quality (less detailes)
+    Stratigies:
+        Full history
+        Sliding window
+        Summarization
+Demo:
+    use an other strategies that is the Sliding window
+    code and explain: build_context
+Test:
+    use window length 2
+
+Block4:
+Limits and pitfalls , what could go wrong when using an LLm
+Explain:
+    Hallucination
+    Prompt injection
+    Leaked API key
+    Private data (when using a untrusted model)
+    Cost and rate limits
+    +Give solutions 

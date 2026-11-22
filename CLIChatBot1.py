@@ -23,14 +23,14 @@ def call_ai():
             print("//help : show this help message")
         else:
             try:
-                stream = client.chat.completions.create(
+                res = client.chat.completions.create(
                     model = "openrouter/free",
                     messages = [{"role":"user","content":user_input}],
                 )
             except Exception as e:
                 print(f"ERROR WHILE FETCHING AI RESPONSE: {e}")
                 return
-            response = stream.choices[0].message.content
+            response = res.choices[0].message.content
             print(f"AI: {response}")
 
 call_ai()
